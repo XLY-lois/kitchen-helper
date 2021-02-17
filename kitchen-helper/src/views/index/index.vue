@@ -10,14 +10,14 @@
         <el-main class="main-container">
           <indexContainer v-if="curPage === 'index'"></indexContainer>
           <userInfo @toPage="toPage($event)" v-if="curPage === 'user'"></userInfo>
-          <contribute @toPage="toPage()" v-if="curPage === 'contribute'"></contribute>
+          <contribute @toPage="toPage($event)" v-if="curPage === 'contribute'"></contribute>
         </el-main>
       </el-container>
     </el-container>
   </div>
 </template>
 <script>
-// import { mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 import indexContainer from "./indexContainer"
 import indexHeader from "./indexHeader"
 import userInfo from "../userInfo"
@@ -35,10 +35,13 @@ export default {
     userInfo,
     contribute
   },
-  // computed: {
-  //   ...mapGetters(["userName"]),
-  // },
-  mounted() {},
+  computed: {
+    ...mapGetters(["user","logined"])
+  },
+  mounted() {
+    console.log(this.user)
+    console.log(this.logined)
+  },
   methods: {
     toPage(page) {
       this.curPage = page

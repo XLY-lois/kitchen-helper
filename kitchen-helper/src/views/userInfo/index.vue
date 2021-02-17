@@ -2,7 +2,7 @@
   <div class="userInfo-container">
     <div class="userInfo-aside">
       <div class="userInfo-aside-avatar">
-        <!-- <img src="http://192.168.1.105:8888/static/15900046112.jpg"> -->
+        <img :src="imgUrl + user.avatar_url">
       </div>
       <input class="userInfo-aside-input" accept="image/*" name="avatar" id="avatar" type="file">
       <el-button @click="updateImg" size="small">上传图片</el-button>
@@ -55,8 +55,9 @@ export default {
         gender: "",
         intro: "",
         address: "",
+        avatar_url: ""
       },
-      imgUrl: "../../assets/logo.png",
+      imgUrl: "http://192.168.1.105:8888/api/static/",
     };
   },
   computed: {
@@ -69,9 +70,9 @@ export default {
     onSubmit() {
       this.editInfo(this.form).then((data) => {
         const code = data.code;
-        console.log(code)
         if (code === 200) {
           this.$message.success("修改信息成功:)");
+          this.$store.commit('SET_USERINFO',user) // 修改store中的userInfo状态
           this.$router.push('/')
         }
       });
@@ -81,7 +82,6 @@ export default {
     },
     updateImg() {
       let img = document.getElementById("avatar").files[0];
-      // console.log(img);
       var formdata = new FormData();
       formdata.append("avatar", img, img.name);
       let config = {
@@ -90,21 +90,11 @@ export default {
       this.$http
         .post("/users/updateAvatar", formdata, config)
         .then((response) => {
-          console.log(response.data);
-          // this.imgUrl = response.data.data
+          const { data } = response.data
+          this.form.avatar_url = data
+          this.$store.commit('SET_USERINFO',this.form) // 修改store中的userInfo状态
         });
     },
-    // headImgChange(e) {
-    //   // let self = this;
-    //   let reader = new FileReader();
-    //   let imgResult = "";
-    //   // console.log(e.target.files[0]);
-    //   reader.readAsDataURL(e.target.files[0]);
-    //   reader.onload = function (e) {
-    //     imgResult = e.target.result; //img base64
-    //     console.log(imgResult);
-    //   };
-    // },
     editInfo(params) {
       return new Promise(async (resolve, reject) => {
         const res = await this.$http.post("/users/completeInfo", params);

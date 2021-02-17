@@ -41,7 +41,8 @@ export default {
           this.$router.push('/')
           this.$store.commit('SET_USERINFO',user) // 修改store中的userInfo状态
           this.$store.commit('SET_LOGINED',true)
-          console.log(this.logined)
+          // console.log(this.user)
+          // console.log(this.logined)
         }
         if(code === 1002) {
           this.$message.warning('用户不存在')
