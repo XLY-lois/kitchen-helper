@@ -6,8 +6,8 @@
         class="image">
       <div>
         <span>好吃的汉堡</span>
-        <div class="bottom clearfix">
-          <el-button type="text" class="button">操作按钮</el-button>
+        <div>
+          <el-button type="text">查看详情</el-button>
         </div>
       </div>
     </el-card>

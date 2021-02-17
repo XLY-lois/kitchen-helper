@@ -5,6 +5,10 @@
         <el-form-item label="标题">
           <el-input v-model="contributeForm.title"></el-input>
         </el-form-item>
+        <el-form-item label="文字说明">
+          <el-input type="textarea" :rows="6" placeholder="请输入内容" v-model="contributeForm.text">
+          </el-input>
+        </el-form-item>
         <el-form-item>
           <el-upload action="#" list-type="picture-card" :auto-upload="false">
             <i slot="default" class="el-icon-plus"></i>
@@ -24,24 +28,9 @@
           <el-dialog :visible.sync="dialogVisible">
             <img width="100%" :src="dialogImageUrl" alt="">
           </el-dialog>
-          <!-- <el-upload
-            action=""
-            class="upload-demo"
-            :on-preview="handlePreview"
-            :on-remove="handleRemove"
-            :file-list="fileList"
-            list-type="picture"
-            :auto-upload="false"
-          >
-            <el-button size="small" type="primary">点击上传</el-button>
-            <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-          </el-upload> -->
-        </el-form-item>
-        <el-form-item label="文字说明">
-          <el-input type="textarea" :rows="6" placeholder="请输入内容" v-model="contributeForm.text">
-          </el-input>
         </el-form-item>
         <el-form-item>
+          <el-button type="primary"  size="small">上传笔记</el-button>
           <el-button @click="toPage('index')" size="small">返回首页</el-button>
         </el-form-item>
       </el-form>
@@ -74,7 +63,7 @@ export default {
     handlePictureCardPreview(file) {
       this.dialogImageUrl = file.url;
       this.dialogVisible = true;
-    }
+    },
   },
   mounted() {},
 };

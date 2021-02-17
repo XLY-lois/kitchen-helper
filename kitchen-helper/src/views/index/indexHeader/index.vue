@@ -17,7 +17,7 @@
       <el-col :span="8">
         <div class="header-user" v-if="logined">
           <div class="header-user-avatar">
-            <img src="@/assets/logo.png">
+            <img :src="imgUrl + user.avatar_url">
           </div>
           <div class="header-user-more">
             <el-popover placement="top-start" trigger="hover">
@@ -48,6 +48,7 @@ export default {
     return {
       dialogVisible: false,
       menuSearch: "",
+      imgUrl: "http://192.168.1.105:8888/api/static/",
     };
   },
   components: {

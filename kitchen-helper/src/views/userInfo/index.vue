@@ -36,8 +36,8 @@
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="onSubmit">保存</el-button>
-          <el-button @click="toPage('index')">返回首页</el-button>
+          <el-button type="primary" @click="onSubmit" size="small">保存</el-button>
+          <el-button @click="toPage('index')" size="small">返回首页</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -88,7 +88,7 @@ export default {
         headers: { "Content-Type": "multipart/form-data" },
       };
       this.$http
-        .post("/users/updateAvatar", formdata, config)
+        .post("/users/uploadFile", formdata, config) //在这里改传头像接口
         .then((response) => {
           const { data } = response.data
           this.form.avatar_url = data
