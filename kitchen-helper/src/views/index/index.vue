@@ -8,7 +8,9 @@
       </el-header>
       <el-container>
         <el-main class="main-container">
-          <indexContainer v-if="curPage === 'index'"></indexContainer>
+          <indexLeft v-show="curPage === 'index'"></indexLeft>
+          <indexContainer v-show="curPage === 'index'"></indexContainer>
+          <indexRight v-show="curPage === 'index'"></indexRight>
           <userInfo @toPage="toPage($event)" v-if="curPage === 'user'"></userInfo>
           <contribute @toPage="toPage($event)" v-if="curPage === 'contribute'"></contribute>
         </el-main>
@@ -20,6 +22,8 @@
 import { mapGetters } from "vuex";
 import indexContainer from "./indexContainer"
 import indexHeader from "./indexHeader"
+import indexLeft from "./indexLeft"
+import indexRight from "./indexRight"
 import userInfo from "../userInfo"
 import contribute from "../contribute"
 
@@ -32,6 +36,8 @@ export default {
   components: {
     indexContainer,
     indexHeader,
+    indexLeft,
+    indexRight,
     userInfo,
     contribute
   },
@@ -62,6 +68,8 @@ export default {
   }
   .main-container {
     height: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
 </style>

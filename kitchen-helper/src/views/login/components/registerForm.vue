@@ -17,6 +17,8 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "registerForm",
   data() {
@@ -29,6 +31,9 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapGetters(["user","logined"]),
+  },
   methods: {
     checkInput() {
       if (this.registerForm.password && this.registerForm.passwordAgain) {
@@ -38,10 +43,14 @@ export default {
       let { telephone, password } = this.registerForm;
       this.register({ telephone, password }).then((data) => {
         const code = data.code
-        if(code == '200') {
-          this.$router.push('/userInfo')
+        const user = data.data
+        if(code === 200) {
+          this.$router.push('/')
+          this.$store.commit('SET_USERINFO',user) // 修改store中的userInfo状态
+          this.$store.commit('SET_LOGINED',true)
+
         }
-        if(code == '1001'){
+        if(code === 1001){
           this.$message.warning('用户已存在')
         }
       })

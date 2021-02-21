@@ -57,7 +57,7 @@ export default {
         address: "",
         avatar_url: ""
       },
-      imgUrl: "http://192.168.1.105:8888/api/static/",
+      imgUrl: "http://192.168.1.105:8888/api/",
     };
   },
   computed: {
@@ -88,7 +88,7 @@ export default {
         headers: { "Content-Type": "multipart/form-data" },
       };
       this.$http
-        .post("/users/uploadFile", formdata, config) //在这里改传头像接口
+        .post("/users/updateAvatar", formdata, config) //在这里改传头像接口
         .then((response) => {
           const { data } = response.data
           this.form.avatar_url = data

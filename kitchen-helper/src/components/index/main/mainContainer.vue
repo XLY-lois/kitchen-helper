@@ -1,11 +1,10 @@
 <template>
   <div class="index-container">
-    <div class="menu-item-box"><MenuItem></MenuItem></div>
-    <div class="menu-item-box"><MenuItem></MenuItem></div>
-    <div class="menu-item-box"><MenuItem></MenuItem></div>
-    <div class="menu-item-box"><MenuItem></MenuItem></div>
-    <div class="menu-item-box"><MenuItem></MenuItem></div>
-
+    <div class="menu-item-box"><MenuItem :menuType="menuType"></MenuItem></div>
+    <div class="menu-item-box"><MenuItem :menuType="menuType"></MenuItem></div>
+    <div class="menu-item-box"><MenuItem :menuType="menuType"></MenuItem></div>
+    <div class="menu-item-box"><MenuItem :menuType="menuType"></MenuItem></div>
+    <div class="menu-item-box"><MenuItem :menuType="menuType"></MenuItem></div>
   </div>
 </template>
 <script>

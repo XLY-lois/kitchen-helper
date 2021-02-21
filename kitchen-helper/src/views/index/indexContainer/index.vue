@@ -19,7 +19,7 @@ export default {
   },
   components: {
     SearchingTab,
-    MainContainer
+    MainContainer,
   },
   methods: {
     selectType(type) {
@@ -33,9 +33,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.575);
   .main-container-tab {
     width: 800px;
     background-color: #fff;

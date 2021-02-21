@@ -5,7 +5,7 @@
         src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
         class="image">
       <div>
-        <span>好吃的汉堡</span>
+        <span>{{ menuType }}</span>
         <div>
           <el-button type="text">查看详情</el-button>
         </div>
@@ -21,6 +21,9 @@ export default {
         padding: "10px",
       },
     };
+  },
+  props: {
+    menuType: String
   },
   components: {},
   watch: {},

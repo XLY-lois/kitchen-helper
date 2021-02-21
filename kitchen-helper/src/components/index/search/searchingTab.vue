@@ -15,11 +15,11 @@ import SearchingList from './searchingList'
 export default {
   data() {
     return {
-      activeName: "jiachang",
+      activeName: "tuijian",
       tabItem: {
+        tuijian: "今日推荐",
         jiachang: "家常菜谱",
         zhonghua: "中华菜系",
-        xiaochi: "各地小吃",
         waiguo: "外国菜谱",
         hongbei: "烘焙",
         me: "我的美食属性",

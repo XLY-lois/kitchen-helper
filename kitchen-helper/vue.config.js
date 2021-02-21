@@ -2,7 +2,6 @@ const path = require('path');
 const resolve = dir => path.join(_dirname,dir);
 const BASE_URL = process.env.NODE_ENV === 'production' ? '/templates' :'/';
 module.exports = {
-  baseUrl:BASE_URL,
   runtimeCompiler: true,
   publicPath: './', // 设置打包文件相对路径
   outputDir: 'dist',
